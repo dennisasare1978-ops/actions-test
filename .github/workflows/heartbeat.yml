@@ -1,0 +1,18 @@
+name: Heartbeat Pipeline
+
+# Trigger the workflow on any push to the repo
+on:
+  push:
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Run shell command to verify pipeline
+      - name: Verify Pipeline Integrity
+        run: echo "Pipeline Integrity Verified - Monitoring Active"
