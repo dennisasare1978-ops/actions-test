@@ -1,0 +1,17 @@
+name: Security Gate
+
+on:
+  push:
+
+jobs:
+  check-forbidden-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Block forbidden files
+        run: |
+          echo "Checking for forbidden files..."
+          [ -f passwords.txt ] && echo "Forbidden file found! Failing workflow." && exit 1 || echo "No forbidden files found."
